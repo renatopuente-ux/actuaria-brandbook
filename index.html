@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brandbook — Actuaria Consultores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Design System Actuaria — tokens */
+    --navy:#151f47;
+    --navy-700:#1e2a5e;
+    --navy-900:#0e1530;
+    --indigo:#4c64d9;       /* acento digital */
+    --sky:#7ec0e5;          /* brand dark-mode */
+    --yellow:#fec62e;
+    --orange:#db541f;
+    --dark-surface:#12131a;
+    --dark-raised:#1d1e26;
+
+    --ink:rgba(0,6,38,0.90);
+    --ink-weak:rgba(0,9,51,0.65);
+    --paper:#ffffff;
+    --sunken:#f5f6fa;
+    --line:rgba(0,17,102,0.10);
+    --line-strong:rgba(0,13,77,0.22);
+
+    --success:#4caf50; --error:#c73a3a; --warning:#ff9800; --info:#1a74a8;
+
+    --font:"Nunito",-apple-system,"Segoe UI",sans-serif;
+    --nav-w:284px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:32px;}
+  body{margin:0;font-family:var(--font);color:var(--ink);background:var(--paper);
+    -webkit-font-smoothing:antialiased;line-height:1.6;}
+
+  /* ───────── layout ───────── */
+  .layout{display:grid;grid-template-columns:var(--nav-w) 1fr;}
+  /* SIDEBAR NAV */
+  .nav{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;
+    background:var(--navy);color:#fff;padding:28px 22px;}
+  .nav-brand{display:flex;align-items:center;gap:11px;margin-bottom:28px;}
+  .nav-mark{width:38px;height:38px;flex:none;}
+  .nav-brand .nb-t{font-weight:900;font-size:17px;letter-spacing:-.02em;line-height:1;}
+  .nav-brand .nb-s{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.14em;text-transform:uppercase;margin-top:3px;}
+  .nav ol{list-style:none;margin:0;padding:0;counter-reset:s;}
+  .nav li a{display:flex;gap:10px;align-items:baseline;text-decoration:none;color:rgba(255,255,255,.62);
+    font-size:13.5px;font-weight:600;padding:7px 10px;border-radius:8px;transition:.15s;}
+  .nav li a:hover{color:#fff;background:rgba(255,255,255,.06);}
+  .nav li a.active{color:#fff;background:rgba(124,192,229,.16);}
+  .nav li a .n{font-size:11px;font-weight:800;color:var(--sky);min-width:20px;font-variant-numeric:tabular-nums;}
+  .nav-sep{margin:16px 0 8px;padding:0 10px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:800;}
+  .nav-foot{margin-top:24px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:11px;color:rgba(255,255,255,.4);}
+
+  .main{min-width:0;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 40px;}
+
+  /* ───────── cover ───────── */
+  .cover{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-900) 60%,#0a1130 100%);
+    color:#fff;padding:120px 0 110px;position:relative;overflow:hidden;}
+  .cover .wrap{position:relative;z-index:2;}
+  .cover .eyebrow{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--sky);margin-bottom:26px;}
+  .cover h1{font-size:clamp(40px,7vw,76px);font-weight:900;letter-spacing:-.03em;line-height:.98;margin:0 0 22px;}
+  .cover .claim{font-size:clamp(20px,2.6vw,28px);font-weight:700;color:#fff;}
+  .cover .claim .accent{color:var(--sky);}
+  .cover p{color:rgba(255,255,255,.66);max-width:48ch;margin:22px 0 0;font-size:16px;}
+  .cover .meta{display:flex;gap:36px;flex-wrap:wrap;margin-top:48px;}
+  .cover .meta div .n{font-size:30px;font-weight:900;color:#fff;line-height:1;}
+  .cover .meta div .l{font-size:12px;color:rgba(255,255,255,.55);margin-top:6px;}
+  /* decorative route motif */
+  .route{position:absolute;inset:0;z-index:1;opacity:.5;}
+
+  /* ───────── sections ───────── */
+  section{padding:84px 0;border-top:1px solid var(--line);}
+  section:first-of-type{border-top:none;}
+  .sec-head{margin-bottom:36px;}
+  .sec-num{display:inline-block;font-size:13px;font-weight:900;color:var(--indigo);letter-spacing:.12em;margin-bottom:10px;}
+  .sec-head h2{font-size:clamp(28px,4vw,40px);font-weight:900;letter-spacing:-.02em;line-height:1.08;margin:0;color:var(--navy);}
+  .sec-head .lead{font-size:18px;color:var(--ink-weak);margin-top:14px;max-width:62ch;text-wrap:pretty;}
+  h3{font-size:20px;font-weight:800;color:var(--navy);margin:0 0 10px;letter-spacing:-.01em;}
+  p{text-wrap:pretty;}
+  .muted{color:var(--ink-weak);}
+
+  /* statement block */
+  .statement{font-size:clamp(22px,3vw,30px);font-weight:800;line-height:1.3;color:var(--navy);letter-spacing:-.01em;}
+  .statement.lg{font-size:clamp(26px,3.6vw,38px);}
+
+  /* cards & grids */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px;}
+  .card.sunken{background:var(--sunken);border-color:transparent;}
+  .card .k{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--indigo);margin-bottom:12px;}
+  .card h3{margin-bottom:8px;}
+  .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(76,100,217,.10);color:var(--navy);
+    border:1px solid rgba(76,100,217,.22);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:700;}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;}
+
+  blockquote{margin:0;padding:22px 26px;border-left:4px solid var(--indigo);background:var(--sunken);border-radius:0 14px 14px 0;
+    font-size:18px;font-style:italic;color:var(--navy);font-weight:600;}
+
+  /* manifesto */
+  .manifesto{background:var(--navy);color:#fff;border-radius:24px;padding:56px 48px;}
+  .manifesto p{font-size:clamp(18px,2.2vw,23px);font-weight:600;line-height:1.55;color:rgba(255,255,255,.92);margin:0 0 18px;}
+  .manifesto p:last-child{margin-bottom:0;}
+  .manifesto .hl{color:var(--sky);font-weight:800;font-style:normal;}
+
+  /* numbered list */
+  .nlist{display:flex;flex-direction:column;gap:18px;counter-reset:nl;}
+  .nlist .item{display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:start;}
+  .nlist .item .num{width:44px;height:44px;border-radius:12px;background:var(--navy);color:#fff;
+    display:grid;place-items:center;font-weight:900;font-size:17px;}
+  .nlist .item h3{margin-bottom:4px;}
+
+  /* persona */
+  .persona{display:grid;grid-template-columns:230px 1fr;gap:32px;align-items:start;}
+  .persona .ava{background:linear-gradient(160deg,var(--navy),var(--navy-700));border-radius:20px;padding:28px;color:#fff;text-align:center;}
+  .persona .ava .ph{width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.1);margin:0 auto 16px;display:grid;place-items:center;}
+  .persona .ava .nm{font-weight:900;font-size:20px;}
+  .persona .ava .rl{font-size:13px;color:rgba(255,255,255,.65);margin-top:4px;}
+  .persona .ava .age{margin-top:14px;font-size:13px;color:var(--sky);font-weight:700;}
+  .deflist{display:flex;flex-direction:column;gap:16px;}
+  .deflist .d .t{font-size:13px;font-weight:800;color:var(--indigo);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;}
+
+  /* archetype */
+  .arch{display:grid;grid-template-columns:1fr 44px 1fr;gap:18px;align-items:stretch;margin-bottom:22px;}
+  .arch .plus{display:grid;place-items:center;font-size:28px;font-weight:300;color:var(--ink-weak);}
+  .arch .res{margin-top:18px;background:var(--navy);color:#fff;border-radius:18px;padding:28px;text-align:center;}
+  .arch .res .nm{font-size:26px;font-weight:900;}
+  .arch .res p{color:rgba(255,255,255,.8);margin:8px 0 0;}
+
+  /* values */
+  .acronym{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px;}
+  .acronym .ch{width:46px;height:46px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900;font-size:22px;}
+  .acronym.alt .ch{background:var(--indigo);}
+
+  /* tone table */
+  table{width:100%;border-collapse:collapse;font-size:14.5px;}
+  th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);font-weight:800;}
+  td .do{color:var(--success);font-weight:800;} td .dont{color:var(--error);font-weight:800;}
+
+  /* logo specimens */
+  .logo-tiles{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .logo-tile{border:1px solid var(--line);border-radius:16px;min-height:150px;display:grid;place-items:center;padding:28px;position:relative;}
+  .logo-tile.dark{background:var(--navy);border-color:var(--navy);}
+  .logo-tile .tl{position:absolute;top:12px;left:14px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-weak);}
+  .logo-tile.dark .tl{color:rgba(255,255,255,.5);}
+  .misuse{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .misuse .m{border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center;min-height:120px;display:flex;flex-direction:column;justify-content:center;gap:10px;}
+  .misuse .m .x{color:var(--error);font-weight:900;font-size:18px;}
+  .misuse .m small{font-size:12px;color:var(--ink-weak);}
+
+  /* wordmark */
+  .wm{font-weight:900;letter-spacing:-.03em;color:var(--navy);line-height:1;}
+  .wm .dot{color:var(--indigo);}
+  .on-dark .wm{color:#fff;} .on-dark .wm .dot{color:var(--sky);}
+
+  /* color swatches */
+  .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .swatch{border-radius:16px;overflow:hidden;border:1px solid var(--line);}
+  .swatch .chip{height:104px;}
+  .swatch .meta{padding:14px 16px;}
+  .swatch .meta .nm{font-weight:800;font-size:14px;color:var(--navy);}
+  .swatch .meta .hex{font-size:12.5px;color:var(--ink-weak);font-variant-numeric:tabular-nums;margin-top:2px;text-transform:uppercase;}
+  .swatch .meta .use{font-size:12px;color:var(--ink-weak);margin-top:6px;}
+
+  /* type specimen */
+  .type-scale .row{display:flex;align-items:baseline;gap:20px;padding:14px 0;border-bottom:1px solid var(--line);}
+  .type-scale .row .lbl{width:130px;flex:none;font-size:12px;color:var(--ink-weak);font-weight:700;}
+  .type-scale .row .ex{color:var(--navy);font-weight:800;letter-spacing:-.02em;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .weights{display:flex;gap:24px;flex-wrap:wrap;margin-top:8px;}
+  .weights span{font-size:30px;color:var(--navy);}
+
+  /* architecture diagram */
+  .arch-brand{display:flex;flex-direction:column;align-items:center;gap:0;}
+  .arch-brand .parent{background:var(--navy);color:#fff;border-radius:16px;padding:18px 30px;font-weight:900;font-size:20px;text-align:center;}
+  .arch-brand .connector{width:2px;height:28px;background:var(--line-strong);}
+  .arch-brand .children{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;}
+  .arch-brand .child{border:1.5px solid var(--line-strong);border-radius:14px;padding:18px;text-align:center;}
+  .arch-brand .child .endorse{font-size:10.5px;color:var(--ink-weak);letter-spacing:.08em;text-transform:uppercase;font-weight:800;}
+  .arch-brand .child .cn{font-weight:800;color:var(--navy);margin-top:6px;font-size:15px;}
+  .arch-brand .child .cd{font-size:12px;color:var(--ink-weak);margin-top:6px;}
+
+  /* applications */
+  .apps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .app{border:1px solid var(--line);border-radius:16px;padding:22px;}
+  .app .ic{width:38px;height:38px;border-radius:10px;background:rgba(76,100,217,.1);display:grid;place-items:center;margin-bottom:12px;}
+  .app h3{font-size:16px;margin-bottom:4px;}
+  .app p{font-size:13.5px;color:var(--ink-weak);margin:0;}
+
+  .note{display:flex;gap:12px;background:rgba(254,198,46,.12);border:1px solid rgba(254,198,46,.4);border-radius:14px;padding:16px 18px;font-size:14px;color:var(--navy);margin-top:18px;}
+  .note b{font-weight:800;}
+  .note::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--orange);margin-top:8px;}
+
+  .mt0{margin-top:0;} .mt24{margin-top:24px;} .mt32{margin-top:32px;}
+
+  footer.bb{background:var(--dark-surface);color:rgba(255,255,255,.6);padding:48px 0;border-top:none;}
+  footer.bb .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+  footer.bb .wm{color:#fff;font-size:22px;}
+
+  /* mobile */
+  .nav-toggle{display:none;}
+  @media (max-width:980px){
+    .layout{grid-template-columns:1fr;}
+    .nav{position:fixed;z-index:50;width:280px;left:0;top:0;transform:translateX(-100%);transition:.25s;}
+    .nav.open{transform:translateX(0);}
+    .nav-toggle{display:inline-flex;position:fixed;z-index:60;top:16px;left:16px;background:var(--navy);color:#fff;
+      border:none;border-radius:10px;width:46px;height:46px;font-size:20px;cursor:pointer;align-items:center;justify-content:center;}
+    .wrap{padding:0 22px;}
+    .grid2,.grid3,.swatches,.misuse,.apps,.arch-brand .children,.persona,.arch{grid-template-columns:1fr;}
+    .arch .plus{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<button class="nav-toggle" id="navToggle" aria-label="Menú">☰</button>
+
+<div class="layout">
+
+  <!-- ═════ SIDEBAR ═════ -->
+  <nav class="nav" id="nav">
+    <div class="nav-brand">
+      <svg class="nav-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="4" y="4" width="92" height="92" rx="24" fill="#1e2a5e"></rect>
+        <path d="M50 26 L74 74 L63 74 L50 47 L37 74 L26 74 Z" fill="#ffffff"></path>
+        <circle cx="50" cy="74" r="4.5" fill="#7ec0e5"></circle>
+      </svg>
+      <div>
+        <div class="nb-t">Actuaria</div>
+        <div class="nb-s">Brandbook</div>
+      </div>
+    </div>
+    <ol>
+      <div class="nav-sep">Estrategia de marca</div>
+      <li><a href="#intro"><span class="n">00</span> Introducción</a></li>
+      <li><a href="#esencia"><span class="n">01</span> Esencia de marca</a></li>
+      <li><a href="#manifiesto"><span class="n">02</span> Manifiesto</a></li>
+      <li><a href="#posicionamiento"><span class="n">03</span> Posicionamiento</a></li>
+      <li><a href="#publico"><span class="n">04</span> Público objetivo</a></li>
+      <li><a href="#arquetipo"><span class="n">05</span> Arquetipo: El Tutor</a></li>
+      <li><a href="#valores"><span class="n">06</span> Personalidad y valores</a></li>
+      <li><a href="#pilares"><span class="n">07</span> Pilares de marca</a></li>
+      <li><a href="#canvas"><span class="n">08</span> Brand Canvas</a></li>
+      <li><a href="#arquitectura"><span class="n">09</span> Arquitectura de marca</a></li>
+      <li><a href="#adn"><span class="n">10</span> Promesa y ADN</a></li>
+      <li><a href="#claim"><span class="n">11</span> Claim</a></li>
+      <li><a href="#tono"><span class="n">12</span> Tono de voz</a></li>
+      <div class="nav-sep">Sistema visual</div>
+      <li><a href="#logo"><span class="n">13</span> Logotipo</a></li>
+      <li><a href="#color"><span class="n">14</span> Color</a></li>
+      <li><a href="#tipografia"><span class="n">15</span> Tipografía</a></li>
+      <li><a href="#graficos"><span class="n">16</span> Elementos gráficos</a></li>
+      <li><a href="#aplicaciones"><span class="n">17</span> Aplicaciones</a></li>
+      <li><a href="#gobernanza"><span class="n">18</span> Gobernanza</a></li>
+    </ol>
+    <div class="nav-foot">Brandbook v1 · 2026<br>Documento de trabajo</div>
+  </nav>
+
+  <main class="main">
+
+    <!-- ═════ COVER ═════ -->
+    <header class="cover">
+      <svg class="route" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path d="M-50 480 C 250 480 280 220 520 220 S 820 420 1080 200 1300 260 1300 260" fill="none" stroke="rgba(124,192,229,0.45)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"></path>
+        <circle cx="520" cy="220" r="6" fill="#7ec0e5"></circle>
+        <circle cx="1080" cy="200" r="6" fill="#fec62e"></circle>
+      </svg>
+      <div class="wrap">
+        <div class="eyebrow">Actuaria Consultores · Manual de marca</div>
+        <h1>Brandbook</h1>
+        <div class="claim">«Trazamos el camino <span class="accent">juntos.</span>»</div>
+        <p>El sistema de marca de Actuaria Consultores: quiénes somos, cómo hablamos y cómo nos vemos. Una guía única para mantener una identidad coherente, sólida y humana en cada punto de contacto.</p>
+        <div class="meta">
+          <div><div class="n">40+</div><div class="l">Años de trayectoria</div></div>
+          <div><div class="n">El Tutor</div><div class="l">Arquetipo de marca</div></div>
+          <div><div class="n">4</div><div class="l">Líneas de negocio</div></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 00 INTRO -->
+    <section id="intro"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">00 — INTRODUCCIÓN</span>
+        <h2>Cómo usar este brandbook</h2>
+        <p class="lead">Este documento es la fuente única de verdad de la marca Actuaria. Reúne la estrategia (quiénes somos y cómo nos comunicamos) y el sistema visual (cómo nos vemos). Úsalo como referencia antes de crear cualquier pieza, interna o externa.</p>
+      </div>
+      <div class="grid3">
+        <div class="card sunken"><div class="k">Para qué sirve</div><p class="mt0 muted">Alinear a equipos, agencias y aliados bajo una misma identidad. Cada decisión de diseño o redacción debe poder justificarse aquí.</p></div>
+        <div class="card sunken"><div class="k">Cómo se divide</div><p class="mt0 muted">Dos bloques: <b>Estrategia de marca</b> (secciones 01–12) y <b>Sistema visual</b> (13–18). La estrategia gobierna lo visual, no al revés.</p></div>
+        <div class="card sunken"><div class="k">Estado</div><p class="mt0 muted">Versión 1, documento vivo. Las secciones marcadas como <i>por definir</i> requieren validación del equipo de marca antes de publicarse.</p></div>
+      </div>
+    </div></section>
+
+    <!-- 01 ESENCIA -->
+    <section id="esencia"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">01 — ESENCIA DE MARCA</span>
+        <h2>Propósito, misión y visión</h2>
+        <p class="lead">El núcleo que da sentido a todo lo que hacemos. Convertimos el riesgo en inteligencia estratégica para que nuestros clientes avancen con certeza.</p>
+      </div>
+      <blockquote>Guiar a nuestros clientes a través de desafíos y oportunidades, convirtiendo los riesgos en inteligencia estratégica, para impulsar su éxito y crecimiento.</blockquote>
+      <p class="muted mt24" style="font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo)">Propósito</p>
+      <div class="grid2 mt24">
+        <div class="card"><div class="k">Misión</div><p class="mt0" style="font-size:17px;font-weight:600;color:var(--navy)">Desarrollamos soluciones con base matemática y tecnológica para mitigar los riesgos y maximizar los beneficios de nuestros clientes.</p></div>
+        <div class="card"><div class="k">Visión</div><p class="mt0" style="font-size:17px;font-weight:600;color:var(--navy)">Brindar a nuestros clientes soluciones excepcionales para un futuro sostenible en el campo actuarial, ciencia de datos y consultoría especializada con presencia internacional.</p></div>
+      </div>
+    </div></section>
+
+    <!-- 02 MANIFIESTO -->
+    <section id="manifiesto"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">02 — MANIFIESTO</span>
+        <h2>En lo que creemos</h2>
+      </div>
+      <div class="manifesto">
+        <p>Tomar decisiones importantes cuando las reglas cambian todo el tiempo es un gran desafío. Por eso, no somos un consultor distante que aparece solo para entregar reportes complejos; somos ese <span class="hl">guía cercano</span> que se sienta a tu lado, hablando claro y transformando las dudas en respuestas seguras.</p>
+        <p>Unimos la sabiduría de cuarenta años de experiencia con las mejores herramientas de hoy para darte una claridad real y la tranquilidad de avanzar con pasos firmes. Te acompañamos a liderar con total confianza y a transformar cada reto en una oportunidad de crecimiento. Porque los grandes horizontes no se conquistan a solas: <span class="hl">trazamos el camino juntos.</span></p>
+      </div>
+    </div></section>
+
+    <!-- 03 POSICIONAMIENTO -->
+    <section id="posicionamiento"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">03 — POSICIONAMIENTO</span>
+        <h2>Diferenciadores estratégicos</h2>
+        <p class="lead">Frente a las grandes auditoras y a las consultoras locales informales, Actuaria ocupa una posición de liderazgo basada en tres pilares de asesoría estratégica. Pasamos del «dato aislado» a un proceso integral de acompañamiento.</p>
+      </div>
+      <div class="nlist">
+        <div class="item"><div class="num">1</div><div>
+          <h3>Asesoría estratégica de base científica</h3>
+          <p class="muted mt0">La ciencia actuarial y la analítica matemática son el motor de alta precisión que respalda todas nuestras líneas. Cada recomendación, rediseño de beneficios o modelo de datos nace de una rigurosa certeza cuantitativa, libre de supuestos o generalidades.</p>
+        </div></div>
+        <div class="item"><div class="num">2</div><div>
+          <h3>Inteligencia histórica y predictibilidad institucional</h3>
+          <p class="muted mt0">Cuatro décadas de datos profundos y experiencia en el tejido empresarial ecuatoriano nos dan una visión prospectiva única: anticipar escenarios macroeconómicos, cambios demográficos y giros regulatorios antes de que afecten al negocio.</p>
+        </div></div>
+        <div class="item"><div class="num">3</div><div>
+          <h3>Traducción operativa y co-dirección del éxito</h3>
+          <p class="muted mt0">Superamos el rol del evaluador externo que solo emite informes. Traducimos datos masivos, variables de talento y pasivos contingentes en hojas de ruta comerciales, operativas y financieras directamente ejecutables.</p>
+        </div></div>
+      </div>
+    </div></section>
+
+    <!-- 04 PUBLICO -->
+    <section id="publico"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">04 — PÚBLICO OBJETIVO</span>
+        <h2>Buyer persona</h2>
+        <p class="lead">El núcleo de nuestra audiencia son profesionales con alta responsabilidad financiera y analítica: contadores, gerentes financieros y directores de riesgos.</p>
+      </div>
+      <div class="persona">
+        <div class="ava">
+          <div class="ph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#7ec0e5"></circle><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" stroke="#7ec0e5" stroke-width="2" fill="none" stroke-linecap="round"></path></svg></div>
+          <div class="nm">Patricio Costa</div>
+          <div class="rl">«El Guardián Institucional»</div>
+          <div class="age">40 años · Jefe Financiero</div>
+        </div>
+        <div>
+          <blockquote style="margin-bottom:24px">Busco la tranquilidad de tomar decisiones correctas que cuiden las finanzas de la empresa y protejan el clima laboral, respaldado siempre por expertos que conozcan mi negocio desde adentro.</blockquote>
+          <div class="deflist">
+            <div class="d"><div class="t">Perfil</div><p class="mt0 muted">Gerente de Finanzas de una corporación mediana-grande (industria, construcción, infraestructura o servicios). Más de 15 años en la organización: conoce cada rincón operativo y es muy exigente con los proveedores externos.</p></div>
+            <div class="d"><div class="t">Puntos de dolor</div><p class="mt0 muted">Complejidad en la gestión de talento, laberinto normativo y operativo (jornadas, remuneraciones variables, pasivos contingentes como jubilación patronal y desahucio), miedo a impactos financieros adversos y frustración con asesores que no entienden su día a día.</p></div>
+            <div class="d"><div class="t">Criterios de decisión</div><p class="mt0 muted">Expertise real en su giro de negocio, propuestas blindadas técnica y legalmente (pasan el filtro de su asesoría jurídica interna) y proveedores con trayectoria y respaldo institucional comprobado.</p></div>
+          </div>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- 05 ARQUETIPO -->
+    <section id="arquetipo"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">05 — ARQUETIPO</span>
+        <h2>El Tutor</h2>
+        <p class="lead">La esencia de la marca emerge de la fusión de dos arquetipos complementarios. No es una calculadora fría ni un asesor complaciente: es un guía didáctico y cercano que acompaña al cliente a transitar la incertidumbre con conocimiento aplicable.</p>
+      </div>
+      <div class="arch">
+        <div class="card"><div class="k">Arquetipo lead</div><h3>El Sabio</h3><p class="mt0 muted">Rigor científico y base de verdad. «La verdad os hará libres.» Se materializa en 40 años de liderazgo, el dominio matemático y la ciencia de datos para modelar el futuro.</p></div>
+        <div class="plus">+</div>
+        <div class="card"><div class="k">Arquetipo soporte</div><h3>El Cuidador</h3><p class="mt0 muted">Sensibilidad humana, soporte y empatía. «Proteger y nutrir.» Evita que la marca se vuelva fría y distante; pone al cliente en el centro y comprende el estrés financiero del gerente.</p></div>
+      </div>
+      <div class="arch"><div class="res" style="grid-column:1 / -1"><div class="nm">= El Mentor</div><p>Un guía que toma la mano del cliente y lo acompaña a transitar la incertidumbre con conocimiento aplicable.</p></div></div>
+    </div></section>
+
+    <!-- 06 VALORES -->
+    <section id="valores"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">06 — PERSONALIDAD Y VALORES</span>
+        <h2>CREE + ACTÚA</h2>
+        <p class="lead">Nuestra identidad se sustenta en una doble promesa: la cultura que nos define como organización y la acción con la que cada colaborador la hace realidad. Primero se <b>CREE</b> y luego se <b>ACTÚA</b> para que, paso a paso, tracemos el camino juntos.</p>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="k">Lo que nos define · Nuestra cultura</div>
+          <div class="acronym"><span class="ch">C</span><span class="ch">R</span><span class="ch">E</span><span class="ch">E</span></div>
+          <p class="muted">El marco de principios bajo el cual vemos el mercado, inspiramos confianza y construimos soluciones sostenibles junto a nuestros clientes. Transformamos los desafíos en oportunidades claras.</p>
+        </div>
+        <div class="card">
+          <div class="k">Lo que nos mueve · Nuestra acción</div>
+          <div class="acronym alt"><span class="ch">A</span><span class="ch">C</span><span class="ch">T</span><span class="ch">Ú</span><span class="ch">A</span></div>
+          <p class="muted">La firma de responsabilidad de cada miembro del equipo: la acción directa con la que nos sentamos al lado del cliente para asegurar su tranquilidad. No nos quedamos como espectadores.</p>
+        </div>
+      </div>
+      <div class="note"><span><b>Por definir:</b> el significado de cada letra de los acrónimos <b>C-R-E-E</b> y <b>A-C-T-Ú-A</b>. Una vez definidos, se documentan aquí con una frase de acción por valor.</span></div>
+    </div></section>
+
+    <!-- 07 PILARES -->
+    <section id="pilares"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">07 — PILARES DE MARCA</span>
+        <h2>Sobre qué construimos todo</h2>
+      </div>
+      <div class="nlist">
+        <div class="item"><div class="num">1</div><div><h3>Experiencia centrada en el cliente</h3><p class="mt0 muted">Ponemos al tomador de decisiones en el centro de cada proyecto. Acompañamiento cercano que traduce la complejidad técnica en información accionable y estratégica para la dirección.</p></div></div>
+        <div class="item"><div class="num">2</div><div><h3>Expertise e inteligencia de datos</h3><p class="mt0 muted">Transformamos datos históricos masivos en escenarios predictivos de alto valor para la gerencia.</p></div></div>
+        <div class="item"><div class="num">3</div><div><h3>Innovación y agilidad aplicada</h3><p class="mt0 muted">Vanguardia tecnológica en metodologías de riesgo y analítica prospectiva, simplificando procesos tradicionales complejos en respuestas eficientes.</p></div></div>
+        <div class="item"><div class="num">4</div><div><h3>Consistencia y coherencia ética</h3><p class="mt0 muted">Voz corporativa íntegra y transparente en todos los canales, consolidando una marca sólida que genera orgullo interno y reputación impecable.</p></div></div>
+        <div class="item"><div class="num">5</div><div><h3>Relación de largo plazo</h3><p class="mt0 muted">Conocemos cada negocio con precisión técnica y trazabilidad en cada cálculo; anticipamos lo que viene y acompañamos a escalar con rigor y experiencia.</p></div></div>
+      </div>
+    </div></section>
+
+    <!-- 08 CANVAS -->
+    <section id="canvas"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">08 — BRAND CANVAS</span>
+        <h2>El lienzo de marca</h2>
+        <p class="lead">Una vista de una página de los componentes que activan la marca en el día a día.</p>
+      </div>
+      <div class="grid3">
+        <div class="card sunken"><div class="k">Propósito</div><p class="mt0 muted">Convertir los riesgos en inteligencia estratégica para impulsar el éxito y crecimiento del cliente.</p></div>
+        <div class="card sunken"><div class="k">Personas clave</div><p class="mt0 muted">Contadores, gerentes de finanzas, directores de riesgos y administradores que demandan metodologías robustas.</p></div>
+        <div class="card sunken"><div class="k">Distintivos</div><p class="mt0 muted">Consultores con altas certificaciones, modelos algorítmicos validados históricamente y simulación de escenarios de riesgo.</p></div>
+        <div class="card sunken"><div class="k">Beneficios clave</div><p class="mt0 muted">Mitigación de pasivos contingentes, cumplimiento normativo perfecto (NIIF / entes de control) y optimización de presupuestos.</p></div>
+        <div class="card sunken"><div class="k">Tono de voz</div><p class="mt0 muted">Corporativo-empático, confiable y conocedor, disminuyendo el hermetismo técnico para asegurar claridad directiva.</p></div>
+        <div class="card sunken"><div class="k">Visualización</div><p class="mt0 muted">Identidad gráfica de cortes limpios, minimalista y moderna, que transmite orden conceptual y solidez estructural.</p></div>
+        <div class="card sunken"><div class="k">Historias</div><p class="mt0 muted">Casos de éxito corporativos donde auditorías complejas se resolvieron con solvencia gracias al respaldo metodológico.</p></div>
+        <div class="card sunken"><div class="k">Acciones</div><p class="mt0 muted">Divulgación constante de normativas, herramientas ágiles de simulación y liderazgo de mesas de innovación financiera.</p></div>
+      </div>
+    </div></section>
+
+    <!-- 09 ARQUITECTURA -->
+    <section id="arquitectura"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">09 — ARQUITECTURA DE MARCA</span>
+        <h2>Modelo endosado</h2>
+        <p class="lead">Para crecer sin diluir la reputación acumulada en cuatro décadas, Actuaria adopta una arquitectura de marca endosada: cada línea de negocio tiene identidad propia, respaldada visiblemente por la marca madre.</p>
+      </div>
+      <div class="arch-brand">
+        <div class="parent">Actuaria</div>
+        <div class="connector"></div>
+        <div class="children">
+          <div class="child"><div class="endorse">by Actuaria</div><div class="cn">Beneficios Laborales</div><div class="cd">Ingeniería de provisiones y planes (jubilación patronal, desahucio, NIIF).</div></div>
+          <div class="child"><div class="endorse">by Actuaria</div><div class="cn">Data Wave</div><div class="cd">Poder analítico: dashboards, simuladores y ciencia de datos.</div></div>
+          <div class="child"><div class="endorse">by Actuaria</div><div class="cn">Riesgos y Finanzas</div><div class="cd">Precisión estructural en riesgo corporativo y planificación.</div></div>
+          <div class="child"><div class="endorse">by Actuaria</div><div class="cn">Seguros y Salud</div><div class="cd">Diseño inteligente de soluciones de protección y salud.</div></div>
+        </div>
+      </div>
+      <p class="muted mt32">El dato actuarial alimenta la planificación, la ciencia de datos optimiza la gestión y la consultoría estratégica unifica todo en una sola dirección empresarial.</p>
+    </div></section>
+
+    <!-- 10 ADN -->
+    <section id="adn"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">10 — PROMESA Y ADN</span>
+        <h2>El ADN de marca</h2>
+      </div>
+      <div class="grid3">
+        <div class="card"><div class="k">¿Qué hacemos?</div><p class="mt0 muted">Transformamos la complejidad de la información institucional, el talento y los riesgos corporativos en certidumbre de negocio, llevando la planificación a un entorno predictivo digital de alta precisión.</p></div>
+        <div class="card"><div class="k">¿Cómo lo hacemos?</div><p class="mt0 muted">Con la sinergia de nuestras cuatro líneas —Beneficios Laborales, Data Wave, Riesgos y Finanzas, Seguros y Salud— respaldada por ciencia matemática aplicada y tecnología calibrada a la realidad local.</p></div>
+        <div class="card"><div class="k">¿Por qué lo hacemos?</div><p class="mt0 muted">Porque los líderes corporativos necesitan trascender los reportes estáticos para guiar a sus empresas con agilidad. Les devolvemos el control estratégico con herramientas intuitivas y planes listos para ejecutar.</p></div>
+      </div>
+      <div class="mt32">
+        <p class="muted" style="font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo)">Promesa de valor</p>
+        <p class="statement">Garantizamos claridad financiera, analítica y humana, transformando la complejidad operativa en hojas de ruta estratégicas. A través de un acompañamiento continuo, aseguramos la sostenibilidad, rentabilidad y el bienestar integral de las organizaciones.</p>
+      </div>
+    </div></section>
+
+    <!-- 11 CLAIM -->
+    <section id="claim"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">11 — CLAIM</span>
+        <h2>Nuestro claim</h2>
+      </div>
+      <div class="manifesto" style="text-align:center;padding:72px 40px">
+        <div class="statement lg" style="color:#fff">«Trazamos el camino <span class="hl">juntos.</span>»</div>
+      </div>
+      <div class="grid2 mt32">
+        <div class="card sunken"><div class="k">Por qué conecta</div><p class="mt0 muted">Mantiene la palabra clave <i>juntos</i>, pero cambia la navegación por la acción de diseñar el mapa. Es colaborativo y profundamente humano: refleja al Mentor que acompaña, no al proveedor que entrega.</p></div>
+        <div class="card sunken"><div class="k">Cómo usarlo</div><p class="mt0 muted">Es la firma de cierre de la marca. Acompaña al logotipo en piezas institucionales y cierres de comunicación. Se escribe siempre completo y con punto final. No se traduce ni se altera.</p></div>
+      </div>
+    </div></section>
+
+    <!-- 12 TONO -->
+    <section id="tono"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">12 — TONO DE VOZ</span>
+        <h2>Cómo habla Actuaria</h2>
+        <p class="lead">Para proyectar la identidad del Tutor, el tono transita de un perfil corporativo tradicional hacia un lenguaje empático y de alta accesibilidad, eliminando la jerga matemática excesiva sin perder rigor profesional.</p>
+      </div>
+      <div class="grid3 mt0">
+        <div class="card"><div class="k">Confiable</div><p class="mt0 muted">Tono de alta seguridad. «No estás solo en esto. Ponemos nuestros 40 años de experiencia a tu lado para que cada paso sea completamente seguro.»</p></div>
+        <div class="card"><div class="k">Conocedor</div><p class="mt0 muted">Tono profesional que resalta la experiencia. «Ir más allá de los datos nos permite darte respuestas claras para simplificar los procesos complejos de tu equipo.»</p></div>
+        <div class="card"><div class="k">Eficiente</div><p class="mt0 muted">Tono directo que enseña y asesora. «Resolvemos lo difícil hoy para que mañana tú y tu equipo se enfoquen en lo que realmente importa: crecer.»</p></div>
+      </div>
+      <div class="card mt32" style="padding:8px 8px">
+      <table>
+        <thead><tr><th>Estilo</th><th>Qué SÍ hacer</th><th>Qué NO hacer</th></tr></thead>
+        <tbody>
+          <tr><td><b>Confiable</b></td><td><span class="do">✓</span> Hablar en primera persona y desde el acompañamiento.</td><td><span class="dont">✗</span> Sonar informal o perder la perspectiva humana.</td></tr>
+          <tr><td><b>Conocedor</b></td><td><span class="do">✓</span> Resaltar la experiencia y traducir lo técnico.</td><td><span class="dont">✗</span> Confundir con jerga o presumir sin claridad.</td></tr>
+          <tr><td><b>Eficiente</b></td><td><span class="do">✓</span> Ser directo, enseñar y orientar a la acción.</td><td><span class="dont">✗</span> Ser ambiguo o descuidar el siguiente paso.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div></section>
+
+    <!-- 13 LOGO -->
+    <section id="logo"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">13 — LOGOTIPO</span>
+        <h2>Sistema de logo</h2>
+        <p class="lead">El logotipo es el activo de identidad más visible. Su construcción combina el monograma «A» —solidez estructural— con el wordmark en Nunito. El nodo final enlaza con el claim «trazamos el camino juntos».</p>
+      </div>
+      <div class="logo-tiles">
+        <div class="logo-tile"><span class="tl">Principal</span>
+          <div style="display:flex;align-items:center;gap:14px">
+            <svg width="52" height="52" viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" rx="24" fill="#151f47"></rect><path d="M50 26 L74 74 L63 74 L50 47 L37 74 L26 74 Z" fill="#fff"></path><circle cx="50" cy="74" r="4.5" fill="#7ec0e5"></circle></svg>
+            <span class="wm" style="font-size:38px">Actuaria<span class="dot">.</span></span>
+          </div>
+        </div>
+        <div class="logo-tile dark on-dark"><span class="tl">Inverso</span>
+          <div style="display:flex;align-items:center;gap:14px">
+            <svg width="52" height="52" viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" rx="24" fill="#fff"></rect><path d="M50 26 L74 74 L63 74 L50 47 L37 74 L26 74 Z" fill="#151f47"></path><circle cx="50" cy="74" r="4.5" fill="#4c64d9"></circle></svg>
+            <span class="wm" style="font-size:38px">Actuaria<span class="dot">.</span></span>
+          </div>
+        </div>
+        <div class="logo-tile"><span class="tl">Monograma</span>
+          <svg width="64" height="64" viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" rx="24" fill="#151f47"></rect><path d="M50 26 L74 74 L63 74 L50 47 L37 74 L26 74 Z" fill="#fff"></path><circle cx="50" cy="74" r="4.5" fill="#7ec0e5"></circle></svg>
+        </div>
+        <div class="logo-tile"><span class="tl">Escala mínima</span>
+          <div style="display:flex;align-items:center;gap:18px">
+            <svg width="22" height="22" viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" rx="24" fill="#151f47"></rect><path d="M50 26 L74 74 L63 74 L50 47 L37 74 L26 74 Z" fill="#fff"></path></svg>
+            <span class="wm" style="font-size:18px">Actuaria<span class="dot">.</span></span>
+          </div>
+        </div>
+      </div>
+      <h3 class="mt32">Usos incorrectos</h3>
+      <div class="misuse mt0">
+        <div class="m"><span class="x">✗</span><small>No deformar ni cambiar las proporciones.</small></div>
+        <div class="m"><span class="x">✗</span><small>No recolorear fuera de la paleta de marca.</small></div>
+        <div class="m"><span class="x">✗</span><small>No colocar sobre fondos de bajo contraste.</small></div>
+        <div class="m"><span class="x">✗</span><small>No añadir sombras, contornos ni efectos.</small></div>
+      </div>
+      <div class="note"><span><b>Por validar:</b> este es un <b>tratamiento basado en el sistema visual actual</b>, no necesariamente el logo oficial. Si Actuaria cuenta con un logotipo corporativo definitivo, compártelo y se documenta aquí (construcción, área de protección y descargables).</span></div>
+    </div></section>
+
+    <!-- 14 COLOR -->
+    <section id="color"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">14 — COLOR</span>
+        <h2>Paleta de marca</h2>
+        <p class="lead">El navy es el color institucional: solidez, confianza y rigor. Los acentos aportan energía y calidez con mesura. Valores tomados del design system de Actuaria.</p>
+      </div>
+      <h3>Principales</h3>
+      <div class="swatches mt0">
+        <div class="swatch"><div class="chip" style="background:#151f47"></div><div class="meta"><div class="nm">Navy</div><div class="hex">#151F47</div><div class="use">Color institucional. Fondos, titulares, logo.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#4c64d9"></div><div class="meta"><div class="nm">Indigo</div><div class="hex">#4C64D9</div><div class="use">Acento digital: enlaces, foco, interacción.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#12131a"></div><div class="meta"><div class="nm">Dark Surface</div><div class="hex">#12131A</div><div class="use">Fondo de modo oscuro y piezas premium.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#7ec0e5"></div><div class="meta"><div class="nm">Sky</div><div class="hex">#7EC0E5</div><div class="use">Marca sobre fondo oscuro y detalles.</div></div></div>
+      </div>
+      <h3 class="mt32">Acentos y neutros</h3>
+      <div class="swatches mt0">
+        <div class="swatch"><div class="chip" style="background:#fec62e"></div><div class="meta"><div class="nm">Amarillo</div><div class="hex">#FEC62E</div><div class="use">Acento puntual, destacados.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#db541f"></div><div class="meta"><div class="nm">Naranja</div><div class="hex">#DB541F</div><div class="use">Acento de energía, llamadas a la acción.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#f5f6fa;border-bottom:1px solid var(--line)"></div><div class="meta"><div class="nm">Sunken</div><div class="hex">#F5F6FA</div><div class="use">Fondo de bloques y tarjetas claras.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#ffffff;border-bottom:1px solid var(--line)"></div><div class="meta"><div class="nm">Blanco</div><div class="hex">#FFFFFF</div><div class="use">Fondo base, espacio y respiro.</div></div></div>
+      </div>
+      <div class="note"><span><b>Proporción:</b> dominan navy y blanco (≈70%); indigo/sky como acento de sistema (≈20%); amarillo y naranja como toques puntuales (≈10%). Verificar contraste AA (≥4.5:1) en texto.</span></div>
+    </div></section>
+
+    <!-- 15 TIPOGRAFIA -->
+    <section id="tipografia"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">15 — TIPOGRAFÍA</span>
+        <h2>Nunito</h2>
+        <p class="lead">Una sola familia para todo el sistema. Sus terminaciones redondeadas equilibran rigor y cercanía: el Sabio y el Cuidador en una misma voz tipográfica.</p>
+      </div>
+      <div class="card">
+        <div class="weights">
+          <span style="font-weight:400">Aa Regular</span>
+          <span style="font-weight:600">Aa SemiBold</span>
+          <span style="font-weight:700">Aa Bold</span>
+          <span style="font-weight:800">Aa ExtraBold</span>
+          <span style="font-weight:900">Aa Black</span>
+        </div>
+      </div>
+      <div class="type-scale mt32">
+        <div class="row"><span class="lbl">Display · 56/64</span><span class="ex" style="font-size:42px;font-weight:900">Trazamos el camino</span></div>
+        <div class="row"><span class="lbl">H1 · 40/48</span><span class="ex" style="font-size:34px;font-weight:800">Inteligencia estratégica</span></div>
+        <div class="row"><span class="lbl">H2 · 32/40</span><span class="ex" style="font-size:28px;font-weight:800">Claridad financiera</span></div>
+        <div class="row"><span class="lbl">H3 · 24/32</span><span class="ex" style="font-size:22px;font-weight:700">Acompañamiento continuo</span></div>
+        <div class="row"><span class="lbl">Body · 16/24</span><span class="ex" style="font-size:16px;font-weight:400;color:var(--ink-weak)">Convertimos el riesgo en certeza de negocio para que avances con confianza.</span></div>
+        <div class="row"><span class="lbl">Caption · 14/20</span><span class="ex" style="font-size:14px;font-weight:600;color:var(--ink-weak)">Etiqueta · dato de apoyo</span></div>
+      </div>
+      <div class="note"><span><b>Jerarquía:</b> titulares en Black/ExtraBold (800–900), subtítulos en Bold (700), cuerpo en Regular (400) y etiquetas en SemiBold (600). Tracking ligeramente negativo en titulares grandes.</span></div>
+    </div></section>
+
+    <!-- 16 GRAFICOS -->
+    <section id="graficos"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">16 — ELEMENTOS GRÁFICOS</span>
+        <h2>El recurso del camino</h2>
+        <p class="lead">El elemento gráfico recurrente es la <b>ruta</b>: una línea con nodos que representa el trayecto que recorremos junto al cliente. Conecta directamente con el claim y aporta dinamismo a piezas estáticas.</p>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;background:var(--navy)">
+        <svg viewBox="0 0 1000 260" style="display:block;width:100%">
+          <path d="M40 200 C 240 200 260 80 440 80 S 720 200 820 90 980 120 980 120" fill="none" stroke="#7ec0e5" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"></path>
+          <circle cx="40" cy="200" r="9" fill="#fff"></circle>
+          <circle cx="440" cy="80" r="9" fill="#fec62e"></circle>
+          <circle cx="820" cy="90" r="9" fill="#db541f"></circle>
+          <circle cx="980" cy="120" r="11" fill="#4c64d9" stroke="#fff" stroke-width="3"></circle>
+        </svg>
+      </div>
+      <div class="grid3 mt32">
+        <div class="card sunken"><div class="k">Iconografía</div><p class="mt0 muted">Set de íconos de línea, esquinas suaves y grosor uniforme, alineados con la redondez de Nunito. (54 componentes en el design system.)</p></div>
+        <div class="card sunken"><div class="k">Trazo</div><p class="mt0 muted">Línea punteada con nodos: usar como separador, fondo sutil o conector entre etapas de un proceso.</p></div>
+        <div class="card sunken"><div class="k">Fotografía</div><p class="mt0 muted">Personas reales en contexto profesional + interfaces y datos. Evitar el stock genérico y frío.</p></div>
+      </div>
+    </div></section>
+
+    <!-- 17 APLICACIONES -->
+    <section id="aplicaciones"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">17 — APLICACIONES</span>
+        <h2>La marca en acción</h2>
+        <p class="lead">Lineamientos por medio. Cada pieza mantiene la jerarquía, la paleta y el tono del Tutor.</p>
+      </div>
+      <div class="apps">
+        <div class="app"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="#4c64d9" stroke-width="2"></rect><path d="M3 8h18" stroke="#4c64d9" stroke-width="2"></path></svg></div><h3>Sitio web y plataforma</h3><p>Navy + blanco, indigo para interacción. Componentes del design system (light/dark).</p></div>
+        <div class="app"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H4z" stroke="#4c64d9" stroke-width="2"></path><path d="M4 20h16" stroke="#4c64d9" stroke-width="2" stroke-linecap="round"></path></svg></div><h3>Presentaciones</h3><p>Portadas navy, datos claros, una idea por lámina. El trazo como hilo conductor.</p></div>
+        <div class="app"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="#4c64d9" stroke-width="2" stroke-linecap="round"></path></svg></div><h3>Reportes PDF</h3><p>Documentos técnicos legibles: jerarquía tipográfica clara, tablas ordenadas, gráficos sobrios.</p></div>
+        <div class="app"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#4c64d9" stroke-width="2"></circle><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6" stroke="#4c64d9" stroke-width="2"></path></svg></div><h3>Redes sociales</h3><p>Avatar = monograma. Plantillas con franja navy y acento puntual. Voz cercana y experta.</p></div>
+        <div class="app"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#4c64d9" stroke-width="2"></rect><path d="M3 7l9 6 9-6" stroke="#4c64d9" stroke-width="2"></path></svg></div><h3>Firma de email</h3><p>Logo + nombre + cargo + claim. Indigo para enlaces. Sin imágenes pesadas.</p></div>
+        <div class="app"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#4c64d9" stroke-width="2"></rect><path d="M8 8h8M8 12h8M8 16h5" stroke="#4c64d9" stroke-width="2" stroke-linecap="round"></path></svg></div><h3>Papelería</h3><p>Tarjetas y hojas membretadas: mucho blanco, logo discreto, datos en navy.</p></div>
+      </div>
+      <div class="note"><span><b>Siguiente entrega:</b> mockups de alta fidelidad por aplicación (plantilla PPT, firma, plantillas RRSS) una vez aprobada la dirección.</span></div>
+    </div></section>
+
+    <!-- 18 GOBERNANZA -->
+    <section id="gobernanza"><div class="wrap">
+      <div class="sec-head"><span class="sec-num">18 — GOBERNANZA</span>
+        <h2>Cuidado de la marca</h2>
+        <p class="lead">Una marca coherente se sostiene con reglas claras y un responsable. Así mantenemos la consistencia en cada punto de contacto.</p>
+      </div>
+      <div class="grid2">
+        <div class="card sunken"><div class="k">Custodia</div><p class="mt0 muted">El área de Marketing y Producto custodia este brandbook, aprueba excepciones y mantiene la biblioteca de activos (logo, plantillas, tokens).</p></div>
+        <div class="card sunken"><div class="k">Versionado</div><p class="mt0 muted">Documento vivo. Cada cambio relevante incrementa la versión y queda registrado con fecha y autor (trazabilidad ISO 9001:2015).</p></div>
+        <div class="card sunken"><div class="k">Alcance</div><p class="mt0 muted">Uso interno y para agencias/proveedores externos. Toda pieza pública debe validarse contra este documento antes de salir.</p></div>
+        <div class="card sunken"><div class="k">Activos</div><p class="mt0 muted">Logo (SVG/PNG), tokens (CSS/Figma), tipografía Nunito (Google Fonts) y componentes del design system (54 componentes, 7 categorías).</p></div>
+      </div>
+      <div class="note"><span><b>Pendientes para v2:</b> letras de los acrónimos CREE/ACTÚA, logo corporativo oficial, mockups de aplicaciones y lineamientos UI por producto (Actuaria Plus, Data Wave, Data Analytics).</span></div>
+    </div></section>
+
+    <footer class="bb"><div class="wrap">
+      <span class="wm">Actuaria<span class="dot" style="color:var(--sky)">.</span></span>
+      <div style="font-size:13px">Brandbook v1 · 2026 · Documento de trabajo · «Trazamos el camino juntos.»</div>
+    </div></footer>
+
+  </main>
+</div>
+
+<script>
+  // mobile nav toggle
+  var nav = document.getElementById('nav'), tog = document.getElementById('navToggle');
+  tog.addEventListener('click', function(){ nav.classList.toggle('open'); });
+  // close on link click (mobile)
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ if(window.innerWidth<=980) nav.classList.remove('open'); }); });
+  // scrollspy
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        if(map[e.target.id]) map[e.target.id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('section[id]').forEach(function(s){ obs.observe(s); });
+</script>
+</body>
+</html>
