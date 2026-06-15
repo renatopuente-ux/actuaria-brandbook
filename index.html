@@ -6,17 +6,17 @@
 <title>Brandbook — Actuaria Consultores</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
     /* Design System Actuaria — tokens */
     --navy:#151f47;
     --navy-700:#1e2a5e;
     --navy-900:#0e1530;
-    --indigo:#4c64d9;       /* acento digital */
-    --sky:#7ec0e5;          /* brand dark-mode */
+    --indigo:#3061aa;       /* azul oficial · Pantone 7455 C */
+    --sky:#8fb0dd;          /* tinte claro para fondos oscuros */
     --yellow:#fec62e;
-    --orange:#db541f;
+    --orange:#df5e2d;       /* naranja oficial · Pantone 7579 C */
     --dark-surface:#12131a;
     --dark-raised:#1d1e26;
 
@@ -159,6 +159,18 @@
   .wm .dot{color:var(--indigo);}
   .on-dark .wm{color:#fff;} .on-dark .wm .dot{color:var(--sky);}
 
+  /* ── imagotipo (velero) ── */
+  .boat{display:block;}
+  .boat.neg{--c-navy:#fff;--c-blue:#fff;--c-orange:#fff;}
+  .boat.mono-navy{--c-navy:#151F47;--c-blue:#151F47;--c-orange:#151F47;}
+  .boat.mono-black{--c-navy:#1a1a1a;--c-blue:#1a1a1a;--c-orange:#1a1a1a;}
+  .boat.gray{--c-navy:#1a1a1a;--c-blue:#9a9a9a;--c-orange:#5e5e5e;}
+  .lockup-h{display:inline-flex;align-items:center;gap:16px;}
+  .lockup-v{display:inline-flex;flex-direction:column;align-items:center;gap:8px;}
+  .wordmark-logo{font-family:"Jost","Nunito",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--navy);line-height:1;}
+  .on-dark .wordmark-logo{color:#fff;}
+  .reg{font-size:.32em;vertical-align:super;font-weight:500;}
+
   /* color swatches */
   .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
   .swatch{border-radius:16px;overflow:hidden;border:1px solid var(--line);}
@@ -220,18 +232,23 @@
 
 <button class="nav-toggle" id="navToggle" aria-label="Menú">☰</button>
 
+<!-- ═════ IMAGOTIPO ACTUARIA — símbolo reutilizable ═════ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="boat" viewBox="0 0 128 128">
+    <path style="fill:var(--c-orange,#DF5E2D)" d="M58 26 L58 70 L30 70 Z"></path>
+    <path style="fill:var(--c-navy,#151F47)" d="M62 14 L62 70 L104 70 C 104 44 88 24 62 14 Z"></path>
+    <path style="fill:var(--c-blue,#3061AA)" d="M34 76 L78 76 A 42 42 0 0 1 34 118 Z"></path>
+  </symbol>
+</svg>
+
 <div class="layout">
 
   <!-- ═════ SIDEBAR ═════ -->
   <nav class="nav" id="nav">
     <div class="nav-brand">
-      <svg class="nav-mark" viewBox="0 0 100 100" aria-hidden="true">
-        <rect x="4" y="4" width="92" height="92" rx="24" fill="#1e2a5e"></rect>
-        <path d="M50 26 L74 74 L63 74 L50 47 L37 74 L26 74 Z" fill="#ffffff"></path>
-        <circle cx="50" cy="74" r="4.5" fill="#7ec0e5"></circle>
-      </svg>
+      <svg class="nav-mark boat neg" viewBox="0 0 128 128" aria-hidden="true"><use href="#boat"></use></svg>
       <div>
-        <div class="nb-t">Actuaria</div>
+        <div class="nb-t" style="font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.05em">Actuaria</div>
         <div class="nb-s">Brandbook</div>
       </div>
     </div>
@@ -267,8 +284,8 @@
     <header class="cover">
       <svg class="route" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <path d="M-50 480 C 250 480 280 220 520 220 S 820 420 1080 200 1300 260 1300 260" fill="none" stroke="rgba(124,192,229,0.45)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"></path>
-        <circle cx="520" cy="220" r="6" fill="#7ec0e5"></circle>
-        <circle cx="1080" cy="200" r="6" fill="#fec62e"></circle>
+        <circle cx="520" cy="220" r="6" fill="#8fb0dd"></circle>
+        <circle cx="1080" cy="200" r="6" fill="#df5e2d"></circle>
       </svg>
       <div class="wrap">
         <div class="eyebrow">Actuaria Consultores · Manual de marca</div>
@@ -509,40 +526,61 @@
     <!-- 13 LOGO -->
     <section id="logo"><div class="wrap">
       <div class="sec-head"><span class="sec-num">13 — LOGOTIPO</span>
-        <h2>Sistema de logo</h2>
-        <p class="lead">El logotipo es el activo de identidad más visible. Su construcción combina el monograma «A» —solidez estructural— con el wordmark en Nunito. El nodo final enlaza con el claim «trazamos el camino juntos».</p>
+        <h2>Imagotipo</h2>
+        <p class="lead">El imagotipo combina el símbolo del <b>velero</b> con el wordmark «ACTUARIA». El velero —vela naranja, vela mayor navy y casco azul— encarna el rumbo y la travesía que recorremos junto al cliente: la traducción visual de «trazamos el camino juntos».</p>
       </div>
       <div class="logo-tiles">
-        <div class="logo-tile"><span class="tl">Principal</span>
-          <div style="display:flex;align-items:center;gap:14px">
-            <svg width="52" height="52" viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" rx="24" fill="#151f47"></rect><path d="M50 26 L74 74 L63 74 L50 47 L37 74 L26 74 Z" fill="#fff"></path><circle cx="50" cy="74" r="4.5" fill="#7ec0e5"></circle></svg>
-            <span class="wm" style="font-size:38px">Actuaria<span class="dot">.</span></span>
+        <div class="logo-tile"><span class="tl">Versión horizontal</span>
+          <div class="lockup-h">
+            <svg class="boat" width="72" height="72" viewBox="0 0 128 128"><use href="#boat"></use></svg>
+            <span class="wordmark-logo" style="font-size:40px">ACTUARIA<span class="reg">®</span></span>
           </div>
         </div>
-        <div class="logo-tile dark on-dark"><span class="tl">Inverso</span>
-          <div style="display:flex;align-items:center;gap:14px">
-            <svg width="52" height="52" viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" rx="24" fill="#fff"></rect><path d="M50 26 L74 74 L63 74 L50 47 L37 74 L26 74 Z" fill="#151f47"></path><circle cx="50" cy="74" r="4.5" fill="#4c64d9"></circle></svg>
-            <span class="wm" style="font-size:38px">Actuaria<span class="dot">.</span></span>
-          </div>
-        </div>
-        <div class="logo-tile"><span class="tl">Monograma</span>
-          <svg width="64" height="64" viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" rx="24" fill="#151f47"></rect><path d="M50 26 L74 74 L63 74 L50 47 L37 74 L26 74 Z" fill="#fff"></path><circle cx="50" cy="74" r="4.5" fill="#7ec0e5"></circle></svg>
-        </div>
-        <div class="logo-tile"><span class="tl">Escala mínima</span>
-          <div style="display:flex;align-items:center;gap:18px">
-            <svg width="22" height="22" viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" rx="24" fill="#151f47"></rect><path d="M50 26 L74 74 L63 74 L50 47 L37 74 L26 74 Z" fill="#fff"></path></svg>
-            <span class="wm" style="font-size:18px">Actuaria<span class="dot">.</span></span>
+        <div class="logo-tile"><span class="tl">Versión vertical</span>
+          <div class="lockup-v">
+            <svg class="boat" width="68" height="68" viewBox="0 0 128 128"><use href="#boat"></use></svg>
+            <span class="wordmark-logo" style="font-size:30px">ACTUARIA<span class="reg">®</span></span>
           </div>
         </div>
       </div>
+
+      <h3 class="mt32">Cromática del logo — un solo color, grises y negativo</h3>
+      <div class="logo-tiles mt0">
+        <div class="logo-tile"><span class="tl">Una tinta · navy</span>
+          <div class="lockup-h"><svg class="boat mono-navy" width="56" height="56" viewBox="0 0 128 128"><use href="#boat"></use></svg><span class="wordmark-logo" style="font-size:32px;color:var(--navy)">ACTUARIA</span></div>
+        </div>
+        <div class="logo-tile"><span class="tl">Escala de grises</span>
+          <div class="lockup-h"><svg class="boat gray" width="56" height="56" viewBox="0 0 128 128"><use href="#boat"></use></svg><span class="wordmark-logo" style="font-size:32px;color:#1a1a1a">ACTUARIA</span></div>
+        </div>
+        <div class="logo-tile dark on-dark"><span class="tl">Negativo</span>
+          <div class="lockup-h"><svg class="boat neg" width="56" height="56" viewBox="0 0 128 128"><use href="#boat"></use></svg><span class="wordmark-logo" style="font-size:32px">ACTUARIA</span></div>
+        </div>
+        <div class="logo-tile" style="background:var(--orange);border-color:transparent"><span class="tl" style="color:rgba(255,255,255,.7)">Sobre naranja</span>
+          <div class="lockup-h"><svg class="boat neg" width="56" height="56" viewBox="0 0 128 128"><use href="#boat"></use></svg><span class="wordmark-logo" style="font-size:32px;color:#fff">ACTUARIA</span></div>
+        </div>
+      </div>
+
+      <h3 class="mt32">Área de seguridad</h3>
+      <div class="grid2 mt0">
+        <div class="card sunken" style="display:flex;align-items:center;justify-content:center;gap:18px">
+          <svg class="boat mono-navy" width="56" height="56" viewBox="0 0 128 128" style="opacity:.25"><use href="#boat"></use></svg>
+          <div><div style="font-size:34px;font-weight:900;color:var(--navy);font-family:'Jost',sans-serif">A=x</div><div class="muted" style="font-size:14px">margen mínimo = ½x</div></div>
+        </div>
+        <div class="card" style="display:flex;align-items:center;justify-content:center">
+          <div style="border:1.5px dashed var(--line-strong);border-radius:10px;padding:22px 26px">
+            <div class="lockup-h"><svg class="boat" width="46" height="46" viewBox="0 0 128 128"><use href="#boat"></use></svg><span class="wordmark-logo" style="font-size:26px">ACTUARIA</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="muted mt24" style="font-size:14px">El área de protección se define a partir de la letra «A» del wordmark: la altura de la «A» es la unidad <b>x</b>. Mantén siempre un margen libre de al menos <b>½x</b> alrededor del imagotipo, en sus versiones horizontal y vertical.</p>
+
       <h3 class="mt32">Usos incorrectos</h3>
-      <div class="misuse mt0">
-        <div class="m"><span class="x">✗</span><small>No deformar ni cambiar las proporciones.</small></div>
-        <div class="m"><span class="x">✗</span><small>No recolorear fuera de la paleta de marca.</small></div>
-        <div class="m"><span class="x">✗</span><small>No colocar sobre fondos de bajo contraste.</small></div>
-        <div class="m"><span class="x">✗</span><small>No añadir sombras, contornos ni efectos.</small></div>
+      <div class="grid3 mt0">
+        <div class="card" style="text-align:center"><div style="color:var(--error);font-size:26px;font-weight:900;margin-bottom:8px">⊘</div><p class="mt0 muted" style="font-size:14px">No invertir el orden: el símbolo nunca va a la derecha del wordmark.</p></div>
+        <div class="card" style="text-align:center"><div style="color:var(--error);font-size:26px;font-weight:900;margin-bottom:8px">⊘</div><p class="mt0 muted" style="font-size:14px">No recolorear el wordmark ni teñir todo el logo de un solo azul.</p></div>
+        <div class="card" style="text-align:center"><div style="color:var(--error);font-size:26px;font-weight:900;margin-bottom:8px">⊘</div><p class="mt0 muted" style="font-size:14px">No cambiar la tipografía del wordmark (p. ej. condensarla o sustituir Lemon Milk).</p></div>
       </div>
-      <div class="note"><span><b>Por validar:</b> este es un <b>tratamiento basado en el sistema visual actual</b>, no necesariamente el logo oficial. Si Actuaria cuenta con un logotipo corporativo definitivo, compártelo y se documenta aquí (construcción, área de protección y descargables).</span></div>
+      <div class="note"><span><b>Activos oficiales:</b> el imagotipo aquí mostrado es una reconstrucción vectorial fiel del manual para visualización en pantalla. Para impresión y artes finales usa siempre los archivos maestros (AI/SVG/PNG) provistos por Marca.</span></div>
     </div></section>
 
     <!-- 14 COLOR -->
@@ -551,29 +589,34 @@
         <h2>Paleta de marca</h2>
         <p class="lead">El navy es el color institucional: solidez, confianza y rigor. Los acentos aportan energía y calidez con mesura. Valores tomados del design system de Actuaria.</p>
       </div>
-      <h3>Principales</h3>
+      <h3>Colores institucionales</h3>
       <div class="swatches mt0">
-        <div class="swatch"><div class="chip" style="background:#151f47"></div><div class="meta"><div class="nm">Navy</div><div class="hex">#151F47</div><div class="use">Color institucional. Fondos, titulares, logo.</div></div></div>
-        <div class="swatch"><div class="chip" style="background:#4c64d9"></div><div class="meta"><div class="nm">Indigo</div><div class="hex">#4C64D9</div><div class="use">Acento digital: enlaces, foco, interacción.</div></div></div>
-        <div class="swatch"><div class="chip" style="background:#12131a"></div><div class="meta"><div class="nm">Dark Surface</div><div class="hex">#12131A</div><div class="use">Fondo de modo oscuro y piezas premium.</div></div></div>
-        <div class="swatch"><div class="chip" style="background:#7ec0e5"></div><div class="meta"><div class="nm">Sky</div><div class="hex">#7EC0E5</div><div class="use">Marca sobre fondo oscuro y detalles.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#151F47"></div><div class="meta"><div class="nm">Navy</div><div class="hex">#151F47</div><div class="use">Pantone 2766 C · CMYK 100/92/40/44 · RGB 21·31·71. Color principal: fondos, titulares, wordmark.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#3061AA"></div><div class="meta"><div class="nm">Azul</div><div class="hex">#3061AA</div><div class="use">Pantone 7455 C · CMYK 87/66/1/0 · RGB 48·97·170. Secundario y acento digital.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#DF5E2D"></div><div class="meta"><div class="nm">Naranja</div><div class="hex">#DF5E2D</div><div class="use">Pantone 7579 C · CMYK 8/77/94/1 · RGB 223·94·45. Acento de energía y destaque.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#ffffff;border-bottom:1px solid var(--line)"></div><div class="meta"><div class="nm">Blanco</div><div class="hex">#FFFFFF</div><div class="use">Fondo base, aire y respiro de las composiciones.</div></div></div>
       </div>
-      <h3 class="mt32">Acentos y neutros</h3>
+      <h3 class="mt32">Grises · una tinta · negativo</h3>
       <div class="swatches mt0">
-        <div class="swatch"><div class="chip" style="background:#fec62e"></div><div class="meta"><div class="nm">Amarillo</div><div class="hex">#FEC62E</div><div class="use">Acento puntual, destacados.</div></div></div>
-        <div class="swatch"><div class="chip" style="background:#db541f"></div><div class="meta"><div class="nm">Naranja</div><div class="hex">#DB541F</div><div class="use">Acento de energía, llamadas a la acción.</div></div></div>
-        <div class="swatch"><div class="chip" style="background:#f5f6fa;border-bottom:1px solid var(--line)"></div><div class="meta"><div class="nm">Sunken</div><div class="hex">#F5F6FA</div><div class="use">Fondo de bloques y tarjetas claras.</div></div></div>
-        <div class="swatch"><div class="chip" style="background:#ffffff;border-bottom:1px solid var(--line)"></div><div class="meta"><div class="nm">Blanco</div><div class="hex">#FFFFFF</div><div class="use">Fondo base, espacio y respiro.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#1a1a1a"></div><div class="meta"><div class="nm">Negro</div><div class="hex">B 100%</div><div class="use">Versión a una tinta.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#7d7d7d"></div><div class="meta"><div class="nm">Gris medio</div><div class="hex">B 60%</div><div class="use">Escala de grises.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#b3b3b3"></div><div class="meta"><div class="nm">Gris claro</div><div class="hex">B 35%</div><div class="use">Escala de grises.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#151F47;display:grid;place-items:center"><svg class="boat neg" width="42" height="42" viewBox="0 0 128 128"><use href="#boat"></use></svg></div><div class="meta"><div class="nm">Negativo</div><div class="hex">Blanco</div><div class="use">Logo blanco sobre fondos oscuros o foto.</div></div></div>
       </div>
-      <div class="note"><span><b>Proporción:</b> dominan navy y blanco (≈70%); indigo/sky como acento de sistema (≈20%); amarillo y naranja como toques puntuales (≈10%). Verificar contraste AA (≥4.5:1) en texto.</span></div>
+      <div class="note"><span><b>Proporción de uso:</b> dominan navy y blanco; el azul actúa como secundario/sistema y el naranja como acento puntual de energía. Verificar contraste AA (≥4.5:1) en texto. Para impresión usa Pantone o CMYK; para digital, RGB/HEX.</span></div>
     </div></section>
 
     <!-- 15 TIPOGRAFIA -->
     <section id="tipografia"><div class="wrap">
       <div class="sec-head"><span class="sec-num">15 — TIPOGRAFÍA</span>
-        <h2>Nunito</h2>
-        <p class="lead">Una sola familia para todo el sistema. Sus terminaciones redondeadas equilibran rigor y cercanía: el Sabio y el Cuidador en una misma voz tipográfica.</p>
+        <h2>Lemon Milk + Nunito</h2>
+        <p class="lead">Dos tipografías con roles claros. <b>Lemon Milk</b> es la voz del imagotipo y de los titulares de marca (geométrica, mayúsculas). <b>Nunito</b> es la tipografía corporativa de sistema para interfaz, cuerpo y comunicaciones.</p>
       </div>
+      <div class="grid2">
+        <div class="card"><div class="k">Tipografía del logo · display</div><div style="font-family:'Jost',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:38px;color:var(--navy)">Actuaria</div><p class="muted mt24" style="font-size:13.5px">Lemon Milk. Uso exclusivo del wordmark y titulares de impacto, en mayúsculas. <i>No está en Google Fonts; se entrega como activo. Aquí se previsualiza con una geométrica equivalente.</i></p></div>
+        <div class="card"><div class="k">Tipografía de sistema · texto</div><div style="font-family:'Nunito';font-weight:900;font-size:38px;color:var(--navy)">Nunito</div><p class="muted mt24" style="font-size:13.5px">Familia del design system para UI, cuerpo y comunicaciones. Terminaciones redondeadas: rigor y cercanía.</p></div>
+      </div>
+      <h3 class="mt32">Pesos de Nunito</h3>
       <div class="card">
         <div class="weights">
           <span style="font-weight:400">Aa Regular</span>
@@ -602,11 +645,11 @@
       </div>
       <div class="card" style="padding:0;overflow:hidden;background:var(--navy)">
         <svg viewBox="0 0 1000 260" style="display:block;width:100%">
-          <path d="M40 200 C 240 200 260 80 440 80 S 720 200 820 90 980 120 980 120" fill="none" stroke="#7ec0e5" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"></path>
+          <path d="M40 200 C 240 200 260 80 440 80 S 720 200 820 90 980 120 980 120" fill="none" stroke="#8fb0dd" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"></path>
           <circle cx="40" cy="200" r="9" fill="#fff"></circle>
-          <circle cx="440" cy="80" r="9" fill="#fec62e"></circle>
-          <circle cx="820" cy="90" r="9" fill="#db541f"></circle>
-          <circle cx="980" cy="120" r="11" fill="#4c64d9" stroke="#fff" stroke-width="3"></circle>
+          <circle cx="440" cy="80" r="9" fill="#3061aa"></circle>
+          <circle cx="820" cy="90" r="9" fill="#df5e2d"></circle>
+          <svg class="boat neg" x="956" y="78" width="60" height="60" viewBox="0 0 128 128"><use href="#boat"></use></svg>
         </svg>
       </div>
       <div class="grid3 mt32">
@@ -643,13 +686,13 @@
         <div class="card sunken"><div class="k">Custodia</div><p class="mt0 muted">El área de Marketing y Producto custodia este brandbook, aprueba excepciones y mantiene la biblioteca de activos (logo, plantillas, tokens).</p></div>
         <div class="card sunken"><div class="k">Versionado</div><p class="mt0 muted">Documento vivo. Cada cambio relevante incrementa la versión y queda registrado con fecha y autor (trazabilidad ISO 9001:2015).</p></div>
         <div class="card sunken"><div class="k">Alcance</div><p class="mt0 muted">Uso interno y para agencias/proveedores externos. Toda pieza pública debe validarse contra este documento antes de salir.</p></div>
-        <div class="card sunken"><div class="k">Activos</div><p class="mt0 muted">Logo (SVG/PNG), tokens (CSS/Figma), tipografía Nunito (Google Fonts) y componentes del design system (54 componentes, 7 categorías).</p></div>
+        <div class="card sunken"><div class="k">Activos</div><p class="mt0 muted">Imagotipo (AI/SVG/PNG), tokens (CSS/Figma), tipografías Lemon Milk (display) y Nunito (sistema) y componentes del design system (54 componentes, 7 categorías).</p></div>
       </div>
-      <div class="note"><span><b>Pendientes para v2:</b> letras de los acrónimos CREE/ACTÚA, logo corporativo oficial, mockups de aplicaciones y lineamientos UI por producto (Actuaria Plus, Data Wave, Data Analytics).</span></div>
+      <div class="note"><span><b>Pendientes para v2:</b> definir las letras de los acrónimos CREE/ACTÚA, incorporar el archivo tipográfico Lemon Milk, mockups de aplicaciones y lineamientos UI por producto (Actuaria Plus, Data Wave, Data Analytics).</span></div>
     </div></section>
 
     <footer class="bb"><div class="wrap">
-      <span class="wm">Actuaria<span class="dot" style="color:var(--sky)">.</span></span>
+      <span class="lockup-h"><svg class="boat neg" width="34" height="34" viewBox="0 0 128 128"><use href="#boat"></use></svg><span class="wordmark-logo" style="font-size:20px;color:#fff">ACTUARIA</span></span>
       <div style="font-size:13px">Brandbook v1 · 2026 · Documento de trabajo · «Trazamos el camino juntos.»</div>
     </div></footer>
 
